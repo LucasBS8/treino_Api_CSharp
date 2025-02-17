@@ -20,12 +20,20 @@ namespace apiController.Controllers
 
         }
 
+        // [HttpPost]
+        // public IActionResult Create(Contato contato)
+        // {
+        //     _context.Add(contato);
+        //     _context.SaveChanges();
+        //     return Ok(contato);
+        // }
+
         [HttpPost]
         public IActionResult Create(Contato contato)
         {
             _context.Add(contato);
             _context.SaveChanges();
-            return Ok(contato);
+            return CreatedAtAction(nameof(ObterPorId), new { id = contato.Id }, contato);
         }
 
         [HttpGet("{id}")]
