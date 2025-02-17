@@ -40,6 +40,12 @@ namespace apiController.Controllers
             return Ok(contato);
         }
 
+        [HttpGet("ObterPorNome")]
+        public IActionResult ObterPorNome(string nome){
+            var contato = _context.Contatos.Where(c => c.Nome.Contains(nome));
+            return Ok(contato);
+        }
+
         [HttpPut("{id}")]
         public IActionResult Atualizar (int id, Contato contato){
             var contatoBanco = _context.Contatos.Find(id);
