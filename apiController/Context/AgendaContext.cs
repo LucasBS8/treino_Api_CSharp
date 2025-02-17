@@ -7,13 +7,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace apiController.Context
 {
-    public class AgendaContext : DbContext
+    public class AgendaContext(DbContextOptions<AgendaContext> options) : DbContext(options)
     {
-        
-        public AgendaContext(DbContextOptions<AgendaContext> options) : base(options)
-        {
-        }
-
         public DbSet<Contato> Contatos { get; set; }
 
     }
